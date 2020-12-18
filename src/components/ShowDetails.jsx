@@ -1,3 +1,4 @@
+import { Alert } from "bootstrap";
 import React from "react";
 import { Row, Col, Badge } from "react-bootstrap";
 import "./ShowDetails.css";
@@ -16,6 +17,49 @@ class ShowDetails extends React.Component {
       console.log(response);
       console.log(parsedResponse);
       this.setState({ movie: parsedResponse });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  AddMovie = async (e) => {
+    e.preventDefault();
+    try {
+      let movie = {
+        Title: this.state.movie.Title,
+        Year: this.state.movie.Year,
+        imdbID: this.state.movie.imdbID,
+        Type: this.state.movie.Type,
+        Poster: this.state.movie.Poster,
+      };
+      let response = await fetch(
+        `https://m5-d10-backend-asm.herokuapp.com/media/`,
+        {
+          method: "POST",
+          body: JSON.stringify(movie),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      alert("Saved");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  RemoveMovie = async (e) => {
+    e.preventDefault();
+    try {
+      let response = await fetch(
+        `https://m5-d10-backend-asm.herokuapp.com/media/` +
+          this.state.movie.imdbID,
+        {
+          method: "DELETE",
+        }
+      );
+      alert("Removed!");
+      this.props.history.push("/");
     } catch (error) {
       console.log(error);
     }
@@ -52,6 +96,23 @@ class ShowDetails extends React.Component {
                     : this.state.movie.Runtime}{" "}
                   • {this.state.movie.Released} • {this.state.movie.Genre}
                 </span>
+                {this.state.movie.Plot ? (
+                  <Badge
+                    variant="secondary"
+                    className="ml-3"
+                    onClick={(e) => this.AddMovie(e)}
+                  >
+                    Save
+                  </Badge>
+                ) : (
+                  <Badge
+                    variant="secondary"
+                    className="ml-3"
+                    onClick={(e) => this.RemoveMovie(e)}
+                  >
+                    Remove
+                  </Badge>
+                )}
               </Col>
             </Row>
             <Row>
