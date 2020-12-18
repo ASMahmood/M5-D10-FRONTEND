@@ -50,18 +50,6 @@ class App extends React.Component {
                   title="Search for: "
                   {...props}
                 />
-                <FixedGallery
-                  loadingstate={this.state.loading}
-                  searchQuery="lord of the rings"
-                  title="Search for: "
-                  {...props}
-                />
-                <FixedGallery
-                  loadingstate={this.state.loading}
-                  searchQuery="pokemon"
-                  title="Search for: "
-                  {...props}
-                />
               </Container>
             )}
           />

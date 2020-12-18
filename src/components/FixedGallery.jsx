@@ -12,17 +12,11 @@ class FixedGallery extends React.Component {
   componentDidMount = async () => {
     try {
       let response = await fetch(
-        `http://www.omdbapi.com/?apikey=1846c79&s=${this.props.searchQuery}`
+        `https://m5-d10-backend-asm.herokuapp.com/media`
       );
-      let paresdResponse = await response.json();
-      let movieArray1 = paresdResponse.Search;
-      response = await fetch(
-        `http://www.omdbapi.com/?apikey=1846c79&s=${this.props.searchQuery}&page=2`
-      );
-      paresdResponse = await response.json();
-      let movieArray2 = paresdResponse.Search;
-      let totalArray = movieArray1.concat(movieArray2);
-      this.setState({ movieArray: totalArray });
+      let parsedResponse = await response.json();
+      console.log(parsedResponse);
+      this.setState({ movieArray: parsedResponse });
     } catch (e) {
       console.log(e);
     }
