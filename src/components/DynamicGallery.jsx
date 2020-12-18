@@ -33,43 +33,6 @@ class DynamicGallery extends React.Component {
     }
   };
 
-  handleSubmit = async (id) => {
-    try {
-      let fakecomment = { ...this.state.comment };
-      fakecomment.elementId = id;
-      await this.setState({ comment: fakecomment });
-      console.log(this.state.comment);
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/comments/",
-        {
-          method: "POST",
-          body: JSON.stringify(this.state.comment),
-          headers: {
-            "Content-Type": "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI2N2UzZjk4MzViMDAwMTc1ODRlZmUiLCJpYXQiOjE2MDU3OTUzOTIsImV4cCI6MTYwNzAwNDk5Mn0.DfmIOMUkFDOn23K1S3KRRfRDXdq3PuQ85LIP5I7piVI",
-          },
-        }
-      );
-      if (response.ok) {
-        alert("Comment Saved");
-        this.setState({
-          comment: {
-            comment: "",
-            rate: 3,
-            elementId: "",
-          },
-        });
-      } else {
-        console.log("uh oh stinky");
-        let error = await response.json();
-        console.log(error);
-      }
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
   updateCommentField = (e) => {
     let comment = { ...this.state.comment };
     let currentId = e.currentTarget.id;
@@ -80,9 +43,10 @@ class DynamicGallery extends React.Component {
   fetchMovie = async () => {
     try {
       let response = await fetch(
-        `http://www.omdbapi.com/?apikey=1846c79&s=${this.props.searchQuery}`
+        `https://m5-d10-backend-asm.herokuapp.com/media/search/movies/?searchQuery=${this.props.searchQuery}`
       );
       let paresdResponse = await response.json();
+      console.log(paresdResponse);
       setTimeout(() => {
         this.setState({ movieArray: paresdResponse.Search });
         this.setState({ loading: false });

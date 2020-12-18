@@ -25,6 +25,7 @@ class CommentList extends React.Component {
             this.props.comments.map((comment, index) => (
               <SingleComment
                 commentObj={comment}
+                movieId={this.props.movieId}
                 key={index}
                 onFetch={this.props.onFetch}
               />

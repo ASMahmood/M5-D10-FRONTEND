@@ -46,8 +46,7 @@ class App extends React.Component {
                 />
                 <FixedGallery
                   loadingstate={this.state.loading}
-                  searchQuery="harry potter"
-                  title="Search for: "
+                  title="Saved Movies: "
                   {...props}
                 />
               </Container>

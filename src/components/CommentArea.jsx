@@ -14,13 +14,7 @@ class CommentArea extends React.Component {
   fetchComments = async () => {
     try {
       let response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/comments/${this.props.match.params.id}`,
-        {
-          headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmI2N2UzZjk4MzViMDAwMTc1ODRlZmUiLCJpYXQiOjE2MDU3OTUzOTIsImV4cCI6MTYwNzAwNDk5Mn0.DfmIOMUkFDOn23K1S3KRRfRDXdq3PuQ85LIP5I7piVI",
-          },
-        }
+        `https://m5-d10-backend-asm.herokuapp.com/media/${this.props.match.params.id}/reviews`
       );
       let comments = await response.json();
       this.setState({ comments: comments });
@@ -35,6 +29,7 @@ class CommentArea extends React.Component {
         {this.state.comments && (
           <CommentList
             comments={this.state.comments}
+            movieId={this.props.match.params.id}
             onFetch={this.fetchComments}
           />
         )}

@@ -10,9 +10,10 @@ class ShowDetails extends React.Component {
   componentDidMount = async () => {
     try {
       let response = await fetch(
-        `http://www.omdbapi.com/?apikey=1846c79&i=${this.props.match.params.id}`
+        `https://m5-d10-backend-asm.herokuapp.com/media/${this.props.match.params.id}`
       );
       let parsedResponse = await response.json();
+      console.log(response);
       console.log(parsedResponse);
       this.setState({ movie: parsedResponse });
     } catch (error) {
