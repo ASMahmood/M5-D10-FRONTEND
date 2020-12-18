@@ -1,0 +1,43 @@
+body {
+  background-color: #141414;
+}
+
+.owl-carousel img {
+  height: 100px;
+  object-fit: cover;
+}
+
+.owl-item {
+  width: 160px !important;
+}
+
+.item > div {
+  display: none;
+  position: absolute;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(255, 255, 255, 0) 35%,
+    rgba(255, 255, 255, 0) 65%,
+    rgba(0, 0, 0, 1) 100%
+  );
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: display 0.3s ease;
+}
+
+.item:hover > div {
+  display: inline;
+}
+
+h2 {
+  color: white;
+  margin-bottom: 15px;
+}
+
+h1 {
+  color: white;
+}

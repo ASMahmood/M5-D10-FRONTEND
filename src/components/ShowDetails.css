@@ -1,0 +1,20 @@
+.badge.metascore {
+  height: 30px;
+  border-radius: 30px;
+}
+.badge.rating {
+  height: 20px;
+}
+.badge.award {
+  height: 50px;
+  width: 50px;
+  border-radius: 500px;
+  background-color: gold;
+}
+.awardText {
+  color: white;
+  text-align: center;
+}
+p {
+  color: white;
+}

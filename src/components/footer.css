@@ -1,0 +1,33 @@
+.footer__container {
+  background-color: #141414;
+  padding: 10px;
+}
+.footer__container h5 {
+  color: #808080;
+  font-size: 14px;
+  text-align: left;
+}
+
+h6 {
+  color: #808080;
+  text-align: left;
+  font-size: 13px;
+}
+
+.icon {
+  color: #808080;
+}
+
+.button {
+  border-radius: 0%;
+  background-color: #141414;
+  color: #808080;
+  border-color: #808080;
+  font-size: 14px;
+}
+
+.button:hover {
+  background-color: #141414;
+  color: aliceblue;
+  border-color: #808080;
+}
