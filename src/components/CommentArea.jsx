@@ -33,11 +33,12 @@ class CommentArea extends React.Component {
             onFetch={this.fetchComments}
           />
         )}
-
-        <AddComment
-          movieId={this.props.match.params.id}
-          onFetch={this.fetchComments}
-        />
+        {this.state.comments && (
+          <AddComment
+            movieId={this.props.match.params.id}
+            onFetch={this.fetchComments}
+          />
+        )}
       </Row>
     );
   }
