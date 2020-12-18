@@ -70,7 +70,11 @@ class ShowDetails extends React.Component {
       <>
         <Row className="my-5">
           <Col md={4} className="poster text-center">
-            <img src={this.state.movie.Poster} alt="movie poster" />
+            <img
+              width="100%"
+              src={this.state.movie.Poster}
+              alt="movie poster"
+            />
           </Col>
           <Col md={8}>
             <Row>
